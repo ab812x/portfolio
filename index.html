@@ -10,77 +10,119 @@
       href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Yanone+Kaffeesatz:wght@200..700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./output.css" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'blue-brand': '#0a61ae',
+              'blue-100-brand': '#e2f8ff',
+              'blue-400-brand': '#61dafb',
+              'yellow-brand': '#ffda4b',
+              'yellow-100-brand': '#fffbe6',
+              'base': '#555',
+              'base-100': '#f1f1f1',
+              'base-800': '#000',
+            },
+            fontFamily: {
+              sans: ['"Open Sans"', 'sans-serif'],
+            },
+            keyframes: {
+              marquee: {
+                '0%': { transform: 'translateX(0%)' },
+                '100%': { transform: 'translateX(-50%)' },
+              },
+            },
+            animation: {
+              marquee: 'marquee 20s linear infinite',
+            },
+          },
+        },
+      };
+    </script>
     <link rel="icon" type="image/jpg" href="./imgs/my photo.jpg" />
     <script src="./script.js"></script>
+    <style>
+      html { scroll-behavior: smooth; }
+      body { font-size: 20px; background: #fdfdfd; }
+      .track { white-space: nowrap; will-change: transform; }
+      a:hover { text-decoration: underline; }
+      /* Mobile menu */
+      #menu { display: flex; }
+      @media (max-width: 768px) {
+        #menu { display: none; }
+        #menu.active { display: flex; }
+      }
+      /* holder-blue hover */
+      .holder-blue { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+      .holder-blue:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
+      /* hero yellow image */
+      .hero-yellow img { margin-top: -60px; max-width: 420px; }
+      /* project links hover */
+      .project-link { transition: all 0.3s ease; }
+      .project-link:hover { transform: translateX(5px); }
+    </style>
   </head>
-  <body>
-    <header>
-      <a href="#" target="_self" class="logo-holder">
-        <div class="logo">A</div>
-        <div class="logo-text">My Portfolio Website</div>
+  <body class="font-sans">
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm py-2.5 max-w-[1440px] mx-auto flex justify-between items-center transition-shadow duration-300 px-4">
+      <a href="#" class="flex items-center px-2.5 font-semibold text-black no-underline">
+        <div class="flex items-center justify-center text-[32px] bg-black text-base-100 h-16 w-16 mr-5 rounded-full">A</div>
+        <span>My Portfolio Website</span>
       </a>
-      <nav>
-        <ul id="menu">
-          <li><a href="#">Home</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
+      <nav class="flex items-center">
+        <ul id="menu" class="flex-col md:flex-row list-none gap-1 items-center w-full md:w-auto text-center">
+          <li><a href="#" class="inline-block px-5 py-2.5 text-base hover:bg-base-100 hover:rounded-xl no-underline transition">Home</a></li>
+          <li><a href="#skills" class="inline-block px-5 py-2.5 text-base hover:bg-base-100 hover:rounded-xl no-underline transition">Skills</a></li>
+          <li><a href="#projects" class="inline-block px-5 py-2.5 text-base hover:bg-base-100 hover:rounded-xl no-underline transition">Projects</a></li>
           <li>
-            <a href="#contact" class="button">Contact Me</a>
+            <a href="#contact" class="inline-block px-7 py-2.5 bg-blue-brand text-base-100 rounded-xl shadow-md hover:bg-black hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 no-underline">Contact Me</a>
           </li>
         </ul>
-        <a href="#" class="mobile-toggle" onclick="toggleMobileMenu()"
-          ><svg
-            class="w-6 h-6 text-gray-800 dark:text-white"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-width="2"
-              d="M5 7h14M5 12h14M5 17h10"
-            />
+        <a href="#" class="md:hidden absolute top-5 right-5 text-black p-2.5" onclick="toggleMobileMenu()">
+          <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h10"/>
           </svg>
         </a>
       </nav>
     </header>
+
     <main>
-      <section class="hero container">
-        <div class="hero-blue">
-          <h1><small>Hi I,m </small>Abdallah Alaa</h1>
-          <p>
-            a Full-Stack Developer skilled in Angular, Express, MongoDB, and React. I help clients build scalable and user-friendly web applications by delivering clean, reliable code and solutions tailored to their needs
+
+      <!-- HERO -->
+      <section class="max-w-[1440px] mx-auto px-7 mt-7 mb-7 flex flex-col lg:flex-row gap-7">
+        <div class="flex-1 bg-blue-100-brand rounded-[30px] p-7 flex flex-col justify-center">
+          <h1 class="text-5xl lg:text-[64px] font-bold leading-tight mb-2.5">
+            <small class="block font-light text-base mb-1">Hi I'm</small>
+            Abdullah Alaa
+          </h1>
+          <p class="text-base leading-relaxed text-base">
+            a Full-Stack Developer skilled in React, Express,and MongoDB. I help clients build scalable and user-friendly web applications by delivering clean, reliable code and solutions tailored to their needs
           </p>
-          <div class="call-to-action">
-            <a href="./my resume.pdf" class="button black">View Resume</a>
-            <a href="mailto:abdala.aa51511@gmail.com" class="button white">
-              Contact Me</a
-            >
+          <div class="mt-5 mb-2.5 flex flex-wrap gap-2.5">
+            <a href="./my resume.pdf" class="inline-block px-7 py-2.5 bg-black text-white rounded-xl shadow-md hover:bg-base hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 no-underline">View Resume</a>
+            <a href="mailto:abdala.aa51511@gmail.com" class="inline-block px-7 py-2.5 bg-white text-black rounded-xl shadow-md hover:bg-base-100 hover:text-base hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 no-underline">Contact Me</a>
           </div>
-          <div class="social-links">
-            <a href="https://github.com/ab812x" target="_blank">
-              <img src="./imgs/github.png" alt="GitHub" width="48"
-            /></a>
-            <a
-              href="https://www.linkedin.com/in/eng-abdullah-alaa-/"
-              target="_blank"
-            >
-              <img src="./imgs/linkedin.png" alt="Linkedin" width="48"
-            /></a>
+          <div class="flex gap-3 mt-2">
+            <a href="https://github.com/ab812x" target="_blank" class="inline-block transition-transform duration-300 hover:scale-110 hover:-translate-y-1 no-underline">
+              <img src="./imgs/github.png" alt="GitHub" width="48" />
+            </a>
+            <a href="https://www.linkedin.com/in/eng-abdullah-alaa-/" target="_blank" class="inline-block transition-transform duration-300 hover:scale-110 hover:-translate-y-1 no-underline">
+              <img src="./imgs/linkedin.png" alt="Linkedin" width="48" />
+            </a>
           </div>
         </div>
-        <div class="hero-yellow">
-          <img src="./imgs/me.png" alt="Abdallah Alaa" width="100%" />
+        <div class="hero-yellow flex-1 bg-yellow-brand rounded-[30px] px-7 flex justify-center items-end">
+          <img src="./imgs/me.png" alt="Abdallah Alaa" class="w-full" />
         </div>
       </section>
-      <section class="logos container">
-        <div class="marquee">
-          <div class="track">
+
+      <!-- LOGOS MARQUEE -->
+      <section class="max-w-[1440px] mx-auto px-7 mt-7 mb-7 bg-base-100 rounded-[30px] lg:rounded-[30px] py-7 overflow-hidden">
+        <div class="relative h-32 overflow-hidden">
+          <div class="track absolute flex gap-2.5 animate-marquee">
             <img src="./imgs/html.png" alt="HTML" width="128" />
             <img src="./imgs/css.png" alt="CSS" width="128" />
             <img src="./imgs/javascript.png" alt="javascript" width="128" />
@@ -104,151 +146,150 @@
           </div>
         </div>
       </section>
-      <section id="skills" class="skills container">
-        <h2>
-          <small>About Me</small>
+
+      <!-- SKILLS -->
+      <section id="skills" class="max-w-[1440px] mx-auto px-7 mt-7 mb-7">
+        <h2 class="text-5xl lg:text-[64px] font-bold leading-tight text-center text-black pb-7 pt-7">
+          <small class="block font-light text-[0.5em] text-base mb-1">About Me</small>
           Skills
         </h2>
-        <div class="holder-blue">
-          <div class="left-column">
-            <h3>Frontend</h3>
-            <ul>
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>Javascript</li>
-              <li>react.js</li>
+        <div class="holder-blue bg-blue-100-brand rounded-[30px] p-7 flex flex-col lg:flex-row gap-7 shadow-[0_10px_25px_rgba(0,0,0,0.05)]">
+          <div class="flex-1">
+            <h3 class="text-[32px] font-semibold leading-tight mb-5 text-black">Frontend</h3>
+            <ul class="list-none flex flex-wrap gap-2.5 mb-5">
+              <li class="inline-block bg-blue-400-brand px-5 py-2.5 rounded-[15px]">HTML</li>
+              <li class="inline-block bg-blue-400-brand px-5 py-2.5 rounded-[15px]">CSS</li>
+              <li class="inline-block bg-blue-400-brand px-5 py-2.5 rounded-[15px]">Javascript</li>
+              <li class="inline-block bg-blue-400-brand px-5 py-2.5 rounded-[15px]">react.js</li>
             </ul>
-            <h3>Backend</h3>
-            <ul>
-              <li>node.js</li>
-              <li>Express.js</li>
-              <li>python</li>
+            <h3 class="text-[32px] font-semibold leading-tight mb-5 text-black">Backend</h3>
+            <ul class="list-none flex flex-wrap gap-2.5 mb-5">
+              <li class="inline-block bg-blue-400-brand px-5 py-2.5 rounded-[15px]">node.js</li>
+              <li class="inline-block bg-blue-400-brand px-5 py-2.5 rounded-[15px]">Express.js</li>
+              <li class="inline-block bg-blue-400-brand px-5 py-2.5 rounded-[15px]">python</li>
             </ul>
-            <h3>Experience</h3>
-            <ul>
-              <li>CodeCademy Full-Stack Web Development Track</li>
-              <li>NTI — MEAN Stack Certification</li>
+            <h3 class="text-[32px] font-semibold leading-tight mb-5 text-black">Experience</h3>
+            <ul class="list-none flex flex-wrap gap-2.5 mb-5">
+              <li class="inline-block bg-blue-400-brand px-5 py-2.5 rounded-[15px]">CodeCademy Full-Stack Web Development Track</li>
+              <li class="inline-block bg-blue-400-brand px-5 py-2.5 rounded-[15px]">NTI — MEAN Stack Certification</li>
             </ul>
           </div>
-          <div class="right-column">
-            <h3>A bit about me</h3>
-            <p>
-              Hi, my name is Abdallah Alaa! I'm an engineering student and a
-              fullstack web developer from Egypt. I'm currently juggling my
-              studies while diving deep into the world of web development.
-              Although it can be challenging, I'm excited to finish the
-              fullstack track soon and start my professional journey. I'm always
-              up for a coding challenge and enjoy creating innovative solutions.
-              Plus, I can't wait to land an awesome job to put all my skills to
-              use!
+          <div class="flex-1">
+            <h3 class="text-[32px] font-semibold leading-tight mb-5 text-black">A bit about me</h3>
+            <p class="mb-5">
+              Hi, my name is Abdullah Alaa! I'm an engineering student and a fullstack web developer from Egypt. I'm currently juggling my studies while diving deep into the world of web development. Although it can be challenging, I'm excited to finish the fullstack track soon and start my professional journey. I'm always up for a coding challenge and enjoy creating innovative solutions. Plus, I can't wait to land an awesome job to put all my skills to use!
             </p>
-
-            <p>
-              When I'm not buried in books or coding away, I love immersing
-              myself in epic video games and anime series. They offer a great
-              escape and endless inspiration. I'm also a big fan of hanging out
-              with friends, whether we're exploring new places or just relaxing
-              with some delicious milkshakes and smoothies. And let's not forget
-              my love for sleep—it's my secret weapon for recharging and staying
-              focused. After all, a well-rested mind is a productive mind!
+            <p class="mb-5">
+              When I'm not buried in books or coding away, I love immersing myself in epic video games and anime series. They offer a great escape and endless inspiration. I'm also a big fan of hanging out with friends, whether we're exploring new places or just relaxing with some delicious milkshakes and smoothies. And let's not forget my love for sleep—it's my secret weapon for recharging and staying focused. After all, a well-rested mind is a productive mind!
             </p>
           </div>
         </div>
       </section>
 
-      <section class="skills container">
-        <div class="holder-blue">
-          <div class="left-column">
-            <h3>Education</h3>
-            <ul>
-              <li>Bachelor’s degree in Computer and Electrical Engineering</li>
-              <li>Codecademy — PERN stack certification</li>
-              <li>NTI — MEAN stack certification</li>
+      <!-- EDUCATION & SOFT SKILLS -->
+      <section class="max-w-[1440px] mx-auto px-7 mt-7 mb-7">
+        <div class="holder-blue bg-blue-100-brand rounded-[30px] p-7 flex flex-col lg:flex-row gap-7 shadow-[0_10px_25px_rgba(0,0,0,0.05)]">
+          <div class="flex-1">
+            <h3 class="text-[32px] font-semibold leading-tight mb-5 text-black">Education</h3>
+            <ul class="list-none flex flex-wrap gap-2.5 mb-5">
+              <li class="inline-block bg-blue-400-brand px-5 py-2.5 rounded-[15px]">Bachelor's degree in Computer and Electrical Engineering</li>
+              <li class="inline-block bg-blue-400-brand px-5 py-2.5 rounded-[15px]">Codecademy — PERN stack certification</li>
+              <li class="inline-block bg-blue-400-brand px-5 py-2.5 rounded-[15px]">NTI — MEAN stack certification</li>
             </ul>
           </div>
-          <div class="right-column">
-            <h3>Soft skills</h3>
-            <ul>
-              <li>Communication</li>
-              <li>Problem-Solving</li>
-              <li>Adaptability</li>
-              <li>Creativity</li>
-              <li>Work Ethic</li>
+          <div class="flex-1">
+            <h3 class="text-[32px] font-semibold leading-tight mb-5 text-black">Soft skills</h3>
+            <ul class="list-none flex flex-wrap gap-2.5 mb-5">
+              <li class="inline-block bg-blue-400-brand px-5 py-2.5 rounded-[15px]">Communication</li>
+              <li class="inline-block bg-blue-400-brand px-5 py-2.5 rounded-[15px]">Problem-Solving</li>
+              <li class="inline-block bg-blue-400-brand px-5 py-2.5 rounded-[15px]">Adaptability</li>
+              <li class="inline-block bg-blue-400-brand px-5 py-2.5 rounded-[15px]">Creativity</li>
+              <li class="inline-block bg-blue-400-brand px-5 py-2.5 rounded-[15px]">Work Ethic</li>
             </ul>
           </div>
         </div>
       </section>
 
-      <section id="services" class="skills container">
-        <h2>
-          <small>What I Do</small>
+      <!-- SERVICES -->
+      <section id="services" class="max-w-[1440px] mx-auto px-7 mt-7 mb-7">
+        <h2 class="text-5xl lg:text-[64px] font-bold leading-tight text-center text-black pb-7 pt-7">
+          <small class="block font-light text-[0.5em] text-base mb-1">What I Do</small>
           Services
         </h2>
-        <div class="holder-blue">
-          <div class="left-column">
-            <h3>Frontend</h3>
-            <p>I can build beautiful and responsive websites using modern frontend technologies.</p>
-            <ul>
-                <li>HTML, CSS, JavaScript</li>
-                <li>React, Angular, jQuery</li>
-                <li>Responsive Design</li>
-                <li>SEO Optimization</li>
+        <div class="holder-blue bg-blue-100-brand rounded-[30px] p-7 flex flex-col lg:flex-row gap-7 shadow-[0_10px_25px_rgba(0,0,0,0.05)]">
+          <div class="flex-1">
+            <h3 class="text-[32px] font-semibold leading-tight mb-5 text-black">Frontend</h3>
+            <p class="mb-5">I can build beautiful and responsive websites using modern frontend technologies.</p>
+            <ul class="list-none flex flex-wrap gap-2.5 mb-5">
+              <li class="inline-block bg-blue-400-brand px-5 py-2.5 rounded-[15px]">HTML, CSS, JavaScript</li>
+              <li class="inline-block bg-blue-400-brand px-5 py-2.5 rounded-[15px]">React, Angular, jQuery</li>
+              <li class="inline-block bg-blue-400-brand px-5 py-2.5 rounded-[15px]">Responsive Design</li>
+              <li class="inline-block bg-blue-400-brand px-5 py-2.5 rounded-[15px]">SEO Optimization</li>
             </ul>
           </div>
-          <div class="right-column">
-            <h3>Backend</h3>
-            <p>I can develop robust and scalable backend systems to power your web applications.</p>
-            <ul>
-                <li>Node.js, Express.js</li>
-                <li>PHP, Python</li>
-                <li>MySQL, MongoDB</li>
-                <li>API Development</li>
+          <div class="flex-1">
+            <h3 class="text-[32px] font-semibold leading-tight mb-5 text-black">Backend</h3>
+            <p class="mb-5">I can develop robust and scalable backend systems to power your web applications.</p>
+            <ul class="list-none flex flex-wrap gap-2.5 mb-5">
+              <li class="inline-block bg-blue-400-brand px-5 py-2.5 rounded-[15px]">Node.js, Express.js</li>
+              <li class="inline-block bg-blue-400-brand px-5 py-2.5 rounded-[15px]">PHP, Python</li>
+              <li class="inline-block bg-blue-400-brand px-5 py-2.5 rounded-[15px]">MySQL, MongoDB</li>
+              <li class="inline-block bg-blue-400-brand px-5 py-2.5 rounded-[15px]">API Development</li>
             </ul>
           </div>
         </div>
       </section>
 
-      <section id="projects" class="skills container">
-        <h2>
-          <small>My Work</small>
+      <!-- PROJECTS -->
+      <section id="projects" class="max-w-[1440px] mx-auto px-7 mt-7 mb-7">
+        <h2 class="text-5xl lg:text-[64px] font-bold leading-tight text-center text-black pb-7 pt-7">
+          <small class="block font-light text-[0.5em] text-base mb-1">My Work</small>
           Projects
         </h2>
-        <div class="holder-blue">
-          <div class="left-column">
-            <h3>My Projects</h3>
-            <ul>
-              <li><a href="https://jammming-ab812x.netlify.app/" target="_blank">Jamming</a></li>
-              <li><a href="https://github.com/ab812x/mixedMessages" target="_blank">Mixed Messages</a></li>
-              <li><a href="#" target="_blank">My Portfolio</a></li>
+        <div class="holder-blue bg-blue-100-brand rounded-[30px] p-7 flex flex-col lg:flex-row gap-7 shadow-[0_10px_25px_rgba(0,0,0,0.05)]">
+          <div class="flex-1">
+            <h3 class="text-[32px] font-semibold leading-tight mb-5 text-black">My Projects</h3>
+            <ul class="list-none flex flex-col gap-2">
+              <li>
+                <a href="https://jammming-ab812x.netlify.app/" target="_blank" class="project-link block bg-blue-400-brand px-6 py-4 rounded-[15px] text-black font-semibold no-underline hover:bg-blue-brand hover:text-white">Jamming</a>
+              </li>
+              <li>
+                <a href="https://github.com/ab812x/mixedMessages" target="_blank" class="project-link block bg-blue-400-brand px-6 py-4 rounded-[15px] text-black font-semibold no-underline hover:bg-blue-brand hover:text-white">Mixed Messages</a>
+              </li>
+              <li>
+                <a href="#" target="_blank" class="project-link block bg-blue-400-brand px-6 py-4 rounded-[15px] text-black font-semibold no-underline hover:bg-blue-brand hover:text-white">My Portfolio</a>
+              </li>
             </ul>
           </div>
-          <div class="right-column">
-            <h3>About My Projects</h3>
+          <div class="flex-1">
+            <h3 class="text-[32px] font-semibold leading-tight mb-5 text-black">About My Projects</h3>
             <p>Here are some of the projects I've worked on. Feel free to check them out!</p>
           </div>
         </div>
       </section>
 
-      <section id="contact" class="skills container">
-        <h2>
-            <small>Get in Touch</small>
-            Contact Me
+      <!-- CONTACT -->
+      <section id="contact" class="max-w-[1440px] mx-auto px-7 mt-7 mb-7">
+        <h2 class="text-5xl lg:text-[64px] font-bold leading-tight text-center text-black pb-7 pt-7">
+          <small class="block font-light text-[0.5em] text-base mb-1">Get in Touch</small>
+          Contact Me
         </h2>
-        <div class="holder-blue" style="text-align: center; padding: 50px;">
-<!--             <p><strong>Email:</strong> <a href="mailto:abdala.aa51511@gmail.com">abdala.aa51511@gmail.com</a></p> -->
-            <p><strong>Phone:</strong> +201001462294</p>
-            <div class="call-to-action" style="margin-top: 30px;">
-                <a href="mailto:abdala.aa51511@gmail.com" class="button white">Send an Email</a>
-            </div>
+        <div class="holder-blue bg-blue-100-brand rounded-[30px] p-14 text-center shadow-[0_10px_25px_rgba(0,0,0,0.05)]">
+          <p class="mb-5"><strong>Phone:</strong> +201001462294</p>
+          <div class="mt-7">
+            <a href="mailto:abdala.aa51511@gmail.com" class="inline-block px-7 py-2.5 bg-white text-black rounded-xl shadow-md hover:bg-base-100 hover:text-base hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 no-underline">Send an Email</a>
+          </div>
         </div>
-        
       </section>
-      <section id="contact" class="skills container"><div class="holder-blue" style="text-align: center; padding: 50px;">
-            <h3>Thank you for visiting!</h3>
-            <p style="margin-bottom: 20px;">I'm always open to discussing new projects and opportunities. Feel free to reach out to me.</p>
 
+      <!-- THANK YOU -->
+      <section class="max-w-[1440px] mx-auto px-7 mt-7 mb-7">
+        <div class="holder-blue bg-blue-100-brand rounded-[30px] p-14 text-center shadow-[0_10px_25px_rgba(0,0,0,0.05)]">
+          <h3 class="text-[32px] font-semibold mb-5 text-black">Thank you for visiting!</h3>
+          <p class="mb-5">I'm always open to discussing new projects and opportunities. Feel free to reach out to me.</p>
         </div>
-</section>
+      </section>
+
     </main>
   </body>
 </html>
